@@ -1,5 +1,4 @@
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -42,13 +41,6 @@ body{
   font-weight:700;
   letter-spacing:1px;
 }
-
-/* Deep red (no glow) */
-.highlight-name {
-  color: #8B0000; /* deep red */
-  font-weight: 800;
-}
-
 .controls{
   display:flex;
   gap:12px;
@@ -85,14 +77,20 @@ body{
 .answer-btn:active{ transform: translateY(-1px); }
 .answer-btn[disabled]{ opacity:0.9; cursor:default; transform:none; }
 
+@keyframes flashCorrect { 0%{transform:scale(1)} 40%{transform:scale(1.02)} 100%{transform:none} }
+@keyframes flashWrong { 0%{transform:scale(1)} 40%{transform:scale(1.02)} 100%{transform:none} }
+.answer-btn.correct { background: #FFD700; border-color:#FFD700; color:#000; animation: flashCorrect 420ms ease; box-shadow:0 8px 28px rgba(255,215,0,0.16); }
+.answer-btn.incorrect { background: #B22222; border-color:#8B0000; color:#fff; animation: flashWrong 420ms ease; box-shadow:0 8px 28px rgba(178,34,34,0.12); }
+
 .progress-bar{ height:8px; background: rgba(255,255,255,0.03); border-radius:8px; margin:18px 0; overflow:hidden; }
 .progress{ height:100%; width:0%; background: linear-gradient(90deg,#3a1bff,#5ec0ff); transition:width 200ms; }
 .counter{ text-align:center; color: #9fffe7; font-weight:700; padding:6px; margin-top:6px; }
 
+/* Timer styles */
 .time-left { font-weight: 700; margin-top: 8px; }
-.time-left-label { color: #FFB400; }
-#timer { color: #B22222 !important; font-weight:900; font-size:20px; }
-#activityTimer { color: #ffffff !important; font-weight:800; font-size:13px; margin-top:6px; letter-spacing:1px; }
+.time-left-label { color: #FFB400; /* deep yellow */ }
+#timer { color: #B22222 !important; font-weight:900; font-size:20px; } /* deep red */
+#activityTimer { color: #ffffff !important; font-weight:800; font-size:13px; margin-top:6px; letter-spacing:1px; } /* deep white */
 
 .footer{ padding:20px; height:56px; }
 
@@ -105,11 +103,7 @@ body{
 </head>
 <body>
 <div class="container" role="application" aria-label="Quiz app">
-
-  <!-- Header with deep red name -->
-  <div class="header">
-    HINDI NUMBERS (<span class="highlight-name">SYAM PRASAD AKELLA</span>)
-  </div>
+  <div class="header">HINDI NUMBERS(1TO100)(SYAM PRASAD AKELLA)</div>
 
   <div class="controls" role="region" aria-label="Quiz controls">
     <div class="control-item" title="Number of choices per question">
@@ -174,7 +168,7 @@ body{
 <script>
 /* =========================
    Polished Quiz JS
-   ========================= */   
+   ========================= */
 
 const questions = [
   
@@ -1011,5 +1005,6 @@ if (themeSelect) {
 </script>
 </body>
 </html>
+
 
 
